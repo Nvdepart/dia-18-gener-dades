@@ -5,8 +5,8 @@
         <v-card  class="product-card mx-auto" 
         @mouseover="showDetails = true" 
         @mouseleave="showDetails = false"
-        max-width="500px">
-          <v-img height="300px" :src="producteVue.thumbnail"></v-img>
+        max-width="1000px">
+          <v-img height="600px" :src="producteVue.thumbnail"></v-img>
           <div class="product-info" v-if="showDetails">
 
             <v-card-title

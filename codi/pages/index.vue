@@ -1,7 +1,17 @@
 <template>
   <v-container>
     <h2>Lista de productes</h2>
-    <br />
+    <v-row>
+      <v-col>
+        <v-text-field 
+          v-model="search"
+          rounded
+          outlined
+          width="150px" 
+          label="Buscar Producte"
+        ></v-text-field>
+      </v-col>
+    </v-row>
     <v-row>
       <v-col flex v-for="p in productsVue" :key="p.id">
         <v-card class="mx-auto" max-width="300">
@@ -30,10 +40,20 @@ export default {
   data() {
     return {
       productsVue: [],
+      search:"",
+      filteredProducts: [],
     };
+  },
+  computed:{
+    filteredProducts(productsVue) {
+      return this.$productsVue.filter(product => {
+        return product.title.toLowerCase().includes(this.search.toLowerCase())
+      })
+    }
   },
   mounted() {
     this.descarregarProductes();
+    
   },
   methods: {
     descarregarProductes() {
