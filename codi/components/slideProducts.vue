@@ -1,14 +1,11 @@
 <template>
   <div>
-    <h1>Hola</h1>
     <pre>{{ products }}</pre>
+    hh
+
     <v-slide-group>
-      <v-slide-item
-        v-for="p in products"
-        :key="p.id"
-        color="surface"
-        width="300"
-      >
+      <v-col v-for="p in products" :key="p.id" color="blue" width="300">
+        <h1>Hola1</h1>
         <v-card
           nuxt
           :to="`/products/${p.id}`"
@@ -33,8 +30,9 @@
             <h2>holla</h2>
           </v-card-title>
         </v-card>
-      </v-slide-item>
+      </v-col>
     </v-slide-group>
+    <p>Je suis ici</p>
   </div>
 </template>
 
