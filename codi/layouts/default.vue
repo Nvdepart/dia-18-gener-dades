@@ -4,6 +4,7 @@
     <v-main>
       <v-container>
         <Nuxt />
+        <Scroll />
       </v-container>
     </v-main>
     <v-footer>
