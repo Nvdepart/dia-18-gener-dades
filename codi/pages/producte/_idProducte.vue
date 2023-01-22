@@ -2,20 +2,21 @@
   <v-container>
     <v-row>
       <v-col>
-        <v-card  class="product-card mx-auto" 
-        @mouseover="showDetails = true" 
-        @mouseleave="showDetails = false"
-        max-width="1000px">
-          <v-img height="600px" :src="producteVue.thumbnail"></v-img>
+        <v-card
+          class="product-card mx-auto"
+          @mouseover="showDetails = true"
+          @mouseleave="showDetails = false"
+          max-width="1000px"
+        >
+          <v-img aspect-ratio="1.75" :src="producteVue.thumbnail"></v-img>
           <div class="product-info" v-if="showDetails">
-
             <v-card-title
               v-text="producteVue.title"
               style="color: #2f7693"
             ></v-card-title>
             <v-card-title
               v-text="producteVue.price + ' $'"
-              style="color:#708083"
+              style="color: #708083"
             ></v-card-title>
             <v-rating
               :value="producteVue.rating"
@@ -30,7 +31,7 @@
               class="text--primary"
               v-text="producteVue.description"
             ></v-card-text>
-            <v-card-text 
+            <v-card-text
               class="text--primary"
               v-text="producteVue.category"
             ></v-card-text>

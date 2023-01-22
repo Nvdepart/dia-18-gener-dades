@@ -1,12 +1,12 @@
 <template>
   <v-app dark>
+    <NavBar />
     <v-main>
       <v-container>
         <Nuxt />
       </v-container>
     </v-main>
-    <v-footer
-    >
+    <v-footer>
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
@@ -14,7 +14,6 @@
 
 <script>
 export default {
-  name: 'DefaultLayout',
-
-}
+  name: "DefaultLayout",
+};
 </script>

@@ -1,76 +1,28 @@
 <template>
-  <v-container>
-    <h2>Lista de productes</h2>
-    <v-row>
-      <v-col>
-        <v-text-field 
-          v-model="search"
-          rounded
-          outlined
-          width="150px" 
-          label="Buscar Producte"
-        ></v-text-field>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col flex v-for="p in productsVue" :key="p.id">
-        <v-card class="mx-auto" max-width="300">
-          <v-img
-            height="150px"
-            :src="p.thumbnail"
-            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-          >
-        </v-img>
-        <v-card-title v-text="p.title" style="color:yellowgreen"></v-card-title>
-          <v-card-text
-            class="text--primary"
-            v-text="p.description"
-          ></v-card-text>
-          <v-card-actions>
-            <v-btn color="blue" :to="'/producte/' + p.id"> Explore </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+  <div>
+    <Landing />
+    <SlideProducts :products="products" />
+  </div>
 </template>
 
 <script>
 export default {
+  async created() {
+    this.products = await this.$axios
+      .get("https://dummyjson.com/products")
+      // Quan acabi
+      .then((resposta) => {
+        console.log("M'he descarregat les dades bé", resposta.data);
+        self.products = resposta.data.products;
+        console.log(products);
+      });
+  },
   data() {
     return {
-      productsVue: [],
-      search:"",
-      filteredProducts: [],
+      products: [],
     };
-  },
-  computed:{
-    filteredProducts(productsVue) {
-      return this.$productsVue.filter(product => {
-        return product.title.toLowerCase().includes(this.search.toLowerCase())
-      })
-    }
-  },
-  mounted() {
-    this.descarregarProductes();
-    
-  },
-  methods: {
-    descarregarProductes() {
-      console.log("Provant api..");
-      let self = this;
-      this.$axios
-        .get("https://dummyjson.com/products")
-        // Quan acabi
-        .then((resposta) => {
-          console.log("M'he descarregat les dades bé", resposta.data);
-          self.productsVue = resposta.data.products;
-        })
-        // Si hi ha errors
-        .catch((error) => {
-          console.log("M'he descarregat les dades malament", error);
-        });
-    },
   },
 };
 </script>
+
+<style scoped></style>
