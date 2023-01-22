@@ -4,9 +4,9 @@
     <v-main>
       <v-container>
         <Nuxt />
-        <Scroll />
       </v-container>
     </v-main>
+    <ScrollTop />
     <v-footer>
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>

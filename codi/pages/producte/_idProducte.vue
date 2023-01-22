@@ -6,16 +6,17 @@
           class="product-card mx-auto"
           @mouseover="showDetails = true"
           @mouseleave="showDetails = false"
-          max-width="1000px"
+          width="450"
+          height="550"
         >
-          <v-img aspect-ratio="1.75" :src="producteVue.thumbnail"></v-img>
+          <v-img aspect-ratio="1.1" :src="producteVue.thumbnail"></v-img>
           <div class="product-info" v-if="showDetails">
             <v-card-title
               v-text="producteVue.title"
               style="color: #2f7693"
             ></v-card-title>
             <v-card-title
-              v-text="producteVue.price + ' $'"
+              v-text="producteVue.price + ' €'"
               style="color: #708083"
             ></v-card-title>
             <v-rating
@@ -24,7 +25,7 @@
               dense
               half-increments
               readonly
-              size="14"
+              size="20"
             ></v-rating>
             <div class="grey--text ms-4"></div>
             <v-card-text

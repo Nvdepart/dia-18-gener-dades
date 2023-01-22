@@ -1,22 +1,36 @@
 <template>
-  <v-btn v-if="showScrollBtn" @click="scrollToTop" class="scroll-to-top">
-    <v-icon>arrow_upward</v-icon>
-  </v-btn>
+  <v-fab-transition>
+    <v-btn
+      @click="scrollToTop"
+      fixed
+      right
+      bottom
+      fab
+      color="primary"
+      v-scroll="checkScroll"
+      v-show="showFab"
+    >
+      <v-icon>mdi-chevron-up</v-icon>
+    </v-btn>
+  </v-fab-transition>
 </template>
 <script>
 export default {
   data: () => ({
-    showScrollBtn: false,
+    showFab: false,
   }),
-  created() {
-    window.addEventListener("scroll", this.handleScroll);
-  },
-  beforeDestroy() {
-    window.removeEventListener("scroll", this.handleScroll);
-  },
+
   methods: {
+    checkScroll() {
+      const h = window.scrollY;
+      if (h > 300) {
+        this.showFab = true;
+      } else {
+        this.showFab = false;
+      }
+    },
     scrollToTop() {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      this.$vuetify.goTo(0, { duration: 1000 });
     },
   },
 };
